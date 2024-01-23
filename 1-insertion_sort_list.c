@@ -51,6 +51,7 @@ void insertion_sort_list(listint_t **list)
 		while (insertion_pt != NULL && insertion_pt->n > value)
 		{
 			swap_nodes(list, insertion_pt, current);
+			print_list(*list);
 			insertion_pt = current->prev;
 		}
 		current = current->next;
