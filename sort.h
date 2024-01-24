@@ -30,4 +30,9 @@ void swap_nodes(listint_t **list, listint_t *node1, listint_t *node2);
 void insertion_sort_list(listint_t **list);
 void shell_sort(int *array, size_t size);
 void insertion_sort(int *array, int size, int diff);
+
+void swap(int *A, int a, int b, size_t size);
+void swim(int *A, int i, size_t size);
+void sink(int *A, int i, int N, size_t size);
+void heap_sort(int *array, size_t size);
 #endif
