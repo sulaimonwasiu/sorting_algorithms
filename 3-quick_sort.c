@@ -1,14 +1,11 @@
 #include "sort.h"
 #include <stdio.h>
 
-size_t swap(int *array, size_t size, size_t idx1, size_t idx2);
-void partition(int *array, size_t size, size_t left, size_t right);
-
 /**
  * quick_sort - Sort an array of integers in ascending order
- * Description: Use Hoare's partition scheme quicksort
- * pivot should always be the last element of the partition being sorted.
- * You're expected to print the array after each time you swap 2 elements.
+ * @array: array to sort
+ * @size: size of the array
+ * Return: void
  */
 void quick_sort(int *array, size_t size)
 {
@@ -19,6 +16,15 @@ void quick_sort(int *array, size_t size)
 
 	partition(array, size, lw, rw);
 }
+
+/**
+ * partition - partition function
+ * @array: array to sort
+ * @size: size of the array
+ * @left: element on the left
+ * @right: element on the right
+ * Return: void
+ */
 
 void partition(int *array, size_t size, size_t left, size_t right)
 {
@@ -63,6 +69,14 @@ void partition(int *array, size_t size, size_t left, size_t right)
 	partition(array, size, i, right);
 }
 
+/**
+ * swap - swap function in quicksort
+ * @array: array to sort
+ * @size: size of the array
+ * @idx1: index of element 1
+ * @idx2: size of the array
+ * Return: an integer type of size_t
+ */
 size_t swap(int *array, size_t size, size_t idx1, size_t idx2)
 {
 	int tmp;
@@ -73,5 +87,5 @@ size_t swap(int *array, size_t size, size_t idx1, size_t idx2)
 
 	print_array(array, size);
 
-	return idx1;
+	return (idx1);
 }
