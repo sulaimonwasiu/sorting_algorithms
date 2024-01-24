@@ -1,13 +1,13 @@
 #include "sort.h"
 
 /**
- * swap - swap two vars in array
+ * swap_heap - swap two vars in array
  * @A: array
  * @a: 1st num
  * @b: 2nd num
  * @size: size of array
  */
-void swap(int *A, int a, int b, size_t size)
+void swap_heap(int *A, int a, int b, size_t size)
 {
 	int tmp;
 
@@ -28,7 +28,7 @@ void swim(int *A, int i, size_t size)
 	{
 		if (A[i] < A[((i - 1) / 2) * 2 + 1] || A[i] < A[((i - 1) / 2) * 2 + 2])
 			break;
-		swap(A, i, (i - 1) / 2, size);
+		swap_heap(A, i, (i - 1) / 2, size);
 		i = (i - 1) / 2;
 	}
 }
@@ -47,18 +47,18 @@ void sink(int *A, int i, int N, size_t size)
 		{
 			if (A[i * 2 + 1] > A[i * 2 + 2])
 			{
-				swap(A, i, i * 2 + 1, size);
+				swap_heap(A, i, i * 2 + 1, size);
 				i = i * 2 + 1;
 			}
 			else
 			{
-				swap(A, i, i * 2 + 2, size);
+				swap_heap(A, i, i * 2 + 2, size);
 				i = i * 2 + 2;
 			}
 		}
 		else if (i * 2 + 1 <= N && A[i] < A[i * 2 + 1])
 		{
-			swap(A, i, i * 2 + 1, size);
+			swap_heap(A, i, i * 2 + 1, size);
 			i = i * 2 + 1;
 		}
 		else
@@ -84,7 +84,7 @@ void heap_sort(int *array, size_t size)
 	}
 	for (N = size - 1; N > 0;)
 	{
-		swap(array, 0, N, size);
+		swap_heap(array, 0, N, size);
 		N--;
 		sink(array, 0, N, size);
 	}
