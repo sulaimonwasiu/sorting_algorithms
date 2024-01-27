@@ -43,7 +43,7 @@ void quicksort(int *array, int start, int end, size_t size)
  * Return: void
  */
 
-void partition(int *array, int start, int end, size_t size)
+int partition(int *array, int start, int end, size_t size)
 {
 	int pivot = array[end];
 	int partitionIndex = start;
