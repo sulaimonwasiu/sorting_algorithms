@@ -9,77 +9,69 @@
  */
 void quick_sort(int *array, size_t size)
 {
-	size_t lw, rw;
+	int end;
 
-	lw = 0;
-	rw = size - 1;
-
-	partition(array, size, lw, rw);
+	end = size - 1;
+	quicksort(array, 0, end, size);
 }
 
 /**
+ * quicksort - main quick sort
+ * @array: array to sort
+ * @start: index start
+ * @end: index end
+ * @size: size of the array
+ * Return: void
+ */
+void quicksort(int *array, int start, int end, size_t size)
+{
+	if (start < end)
+	{
+		int partitionIndex;
+
+		partitionIndex = partition(array, start, end, size);
+		quicksort(array, start, partitionIndex - 1, size);
+		quicksort(array, partitionIndex + 1, end, size);
+	}
+}
+/**
  * partition - partition function
  * @array: array to sort
+ * @start: index start
+ * @end: index end
  * @size: size of the array
- * @left: element on the left
- * @right: element on the right
  * Return: void
  */
 
-void partition(int *array, size_t size, size_t left, size_t right)
+void partition(int *array, int start, int end, size_t size)
 {
-	size_t i, j, pivot;
+	int pivot = array[end];
+	int partitionIndex = start;
+	int i;
 
-	if (left >= right)
+	for (i = start; i < end; i++)
 	{
-		return;
-	}
-
-	pivot = right;
-	while (array[i] < array[pivot] && i < pivot)
-		i++;
-
-	if (i < right)
-	{
-		pivot = swap(array, size, i, pivot);
-
-		j = right - 1;
-		while (i < j)
+		if (array[i] <= pivot)
 		{
-			if (array[j] < array[pivot])
-			{
-				swap(array, size, i, j);
-				i++;
-			}
-			j--;
+			swap(&array[i], &array[partitionIndex]);
+			partitionIndex++;
 		}
 	}
-	else
-		pivot = i--;
-
-	swap(array, size, pivot, i - 1);
-
-	partition(array, size, left, i - 2);
-	partition(array, size, i, right);
+	swap(&array[partitionIndex], &array[end]);
+	print_array(array, size);
+	return (partitionIndex);
 }
 
 /**
  * swap - swap function in quicksort
- * @array: array to sort
- * @size: size of the array
- * @idx1: index of element 1
- * @idx2: size of the array
- * Return: an integer type of size_t
+ * @idx1: item 1
+ * @idx2: item 2
+ * Return: void
  */
-size_t swap(int *array, size_t size, size_t idx1, size_t idx2)
+void swap(int *idx1, int *idx2)
 {
-	int tmp;
+	int temp = *idx1;
 
-	tmp = array[idx1];
-	array[idx1] = array[idx2];
-	array[idx2] = tmp;
-
-	print_array(array, size);
-
-	return (idx1);
+	*idx1 = *idx2;
+	*idx2 = temp;
 }

@@ -23,9 +23,13 @@ void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
 void bubble_sort(int *array, size_t size);
 void selection_sort(int *array, size_t size);
-size_t swap(int *array, size_t size, size_t idx1, size_t idx2);
-void partition(int *array, size_t size, size_t left, size_t right);
+
+/*--------------Quick sort-------------------------------*/
+void swap(int *idx1, int *idx2);
+void partition(int *array, int start, int end, size_t size);
+void quicksort(int *array, int start, int end, size_t size);
 void quick_sort(int *array, size_t size);
+/*---------------------------------------------------------------*/
 void swap_nodes(listint_t **list, listint_t *node1, listint_t *node2);
 void insertion_sort_list(listint_t **list);
 void shell_sort(int *array, size_t size);
