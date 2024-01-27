@@ -30,11 +30,8 @@ void partition(int *array, size_t size, size_t left, size_t right)
 {
 	size_t i, j, pivot;
 
-	printf("?");
-
 	if (left >= right)
 	{
-		printf("Hi");
 		return;
 	}
 
@@ -44,7 +41,6 @@ void partition(int *array, size_t size, size_t left, size_t right)
 
 	if (i < right)
 	{
-		printf("A");
 		pivot = swap(array, size, i, pivot);
 
 		j = right - 1;
@@ -60,8 +56,6 @@ void partition(int *array, size_t size, size_t left, size_t right)
 	}
 	else
 		pivot = i--;
-
-	printf("B");
 
 	swap(array, size, pivot, i - 1);
 
